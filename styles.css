@@ -1,0 +1,255 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  background-color: #cdb413;
+  color: #333;
+  line-height: 1.6;
+}
+
+.topbar {
+  background-color: #333;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.topbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+}
+
+.topbar a:hover {
+  text-decoration: underline;
+}
+
+.about {
+  display: flex;
+}
+
+.about a {
+  margin-left: 1rem;
+}
+
+main {
+  padding: 6rem 2rem 2rem 2rem;
+  text-align: left;
+}
+
+.about-main {
+  padding: 6rem 2rem 2rem 2rem; 
+  text-align: left;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  height: 100vh;
+  font-size: larger;
+}
+
+.about-content {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-content h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.about-content p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-content p:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem 2rem; 
+  margin-bottom: 3rem;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 50px; 
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #2a9d8f;
+  height: 550px;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+.node {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 70px auto;
+  border-radius: 50%;
+  background-color: #1a465b;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.node:hover {
+  transform: scale(1.1);
+  background-color: #264653;
+}
+
+.node i {
+  color: white;
+  font-size: 20px;
+}
+
+.info-card {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  width: 300px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  left: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.node:hover .info-card {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* .node:nth-child(even) .info-card {
+  left: auto;
+  right: 70px;
+} */
+
+.info-card h3 {
+  margin-top: 0;
+  color: #264653;
+}
+
+.info-card p {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.info-card .date {
+  font-style: italic;
+  color: #2a9d8f;
+  margin-bottom: 15px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 999; 
+}
+
+ol li {
+  padding-left: 20px; 
+  font-size: 20;
+}
+
+ul li {
+  padding-left: 20px; 
+  font-size: large;
+}
+
+.gallery-button button {
+  background-color: #1a465b;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 5rem;
+  margin-left: 40rem;
+}
+
+.gallery-button button:hover {
+  background-color: #051f2a;
+}
+
+.gallery {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gallery.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gallery img {
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
