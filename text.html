@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analyzer</title>
+    <link rel="stylesheet" href="text.css">
+</head>
+<body>
+    <header>
+        <nav class="topbar">
+            <a href="index.html">Home</a>
+          <div class="about">
+            <a href="about.html">About Me</a>
+            <a href="education.html">My Education</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="cv.pdf" target="_blank">CV</a>
+            <a href="text.html">Text Analyzer</a>
+          </div>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Text Analyzer</h1>
+        <textarea id="textInput" placeholder="Add text to analyze"></textarea>
+        <button id="analyzeBtn">Analyze Text</button>
+        
+        <div class="results" id="results">
+            <div class="stat">
+                <span class="stat-label">Letters:</span>
+                <span class="stat-value" id="letterCount">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Spaces:</span>
+                <span class="stat-value" id="spaceCount">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Words:</span>
+                <span class="stat-value" id="wordCount">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Newlines:</span>
+                <span class="stat-value" id="newlineCount">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Special Characters:</span>
+                <span class="stat-value" id="specialCount">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Number of pronouns:</span>
+                <span class="stat-value" id="pronounCount">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Number of prepositions:</span>
+                <span class="stat-value" id="prepositionCount">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Number of indefinite articles:</span>
+                <span class="stat-value" id="articleCount">0</span>
+            </div>
+        </div>        
+    </div>
+    <script>
+        document.getElementById('analyzeBtn').addEventListener('click', function() {
+            const text = document.getElementById('textInput').value;
+            const letterCount = (text.match(/[a-zA-Z]/g) || []).length;
+            document.getElementById('letterCount').textContent = letterCount;
+            const spaceCount = (text.match(/ /g) || []).length;
+            document.getElementById('spaceCount').textContent = spaceCount;
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            document.getElementById('wordCount').textContent = words.length;
+            const newlineCount = (text.match(/\n/g) || []).length;
+            document.getElementById('newlineCount').textContent = newlineCount;
+            const specialCharCount = (text.match(/[^a-zA-Z0-9\s]/g) || []).length;
+            document.getElementById('specialCount').textContent = specialCharCount;
+            document.getElementById('results').style.display = 'block';
+            const pronouns=["i","me","my","mine","we","us","our","ours","you","your","yours","he","him","his","she","her","hers","it","its","they","them","their","theirs"];
+            const prepositions=["about","above","across","after","against","along","among","around","at","before","behind","below","beneath","beside","between","by","for","from","in","inside","into","near","of","off","on","onto","out","outside","over","through","to","toward","under","until"];
+            const articles=["a","an"];
+            let pronounCount = 0;
+            let prepositionCount = 0;
+            let articleCount = 0;
+            for (let word of words) {
+                if (pronouns.includes(word.toLowerCase())) {
+                    pronounCount++;
+                }
+                if (prepositions.includes(word.toLowerCase())) {
+                    prepositionCount++;
+                }
+                if (articles.includes(word.toLowerCase())) {
+                    articleCount++;
+                }
+            }
+            document.getElementById('pronounCount').textContent = pronounCount;
+            document.getElementById('prepositionCount').textContent = prepositionCount;
+            document.getElementById('articleCount').textContent = articleCount;
+            document.getElementById('results').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
